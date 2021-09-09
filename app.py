@@ -17,6 +17,7 @@ def create_app(config_name):
     app.config.from_pyfile('config.py')
     app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['FLASK_ADMIN_SWATCH'] = 'Paper'
     db = SQLAlchemy(config.APP)
     start_views(app, db)
     db.init_app(app)
@@ -24,7 +25,7 @@ def create_app(config_name):
 
     @app.route('/')
     def index():
-        return 'Tela index...'
+        return '<h1>Tela index</h1>'
 
     @app.route('/login/')
     def login():
